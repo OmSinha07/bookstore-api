@@ -85,6 +85,8 @@ You can test the API using:
 Postman or
 curl
 
+Also you can follow bookstore api documentation for any api related issue.
+
 The built-in frontend (index.html)
 
 ## 📁 Project Structure
