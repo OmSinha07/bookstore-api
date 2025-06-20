@@ -82,9 +82,19 @@ curl
 
 The built-in frontend (index.html)
 
-Project Structure
+## 📁 Project Structure
 
-<pre> ## 📁 Project Structure ```text bookstore-api/ ├── app.py # Flask backend server ├── templates/ # HTML templates directory │ └── frontend.html # Frontend user interface (UI) ├── requirements.txt # Python dependencies ├── .env # Environment config (PostgreSQL credentials) ├── README.md # Project documentation └── Book Store API Documentation/ # API docs, JSON examples, etc. ``` </pre>
+```text
+bookstore-api/
+├── app.py                         # Flask backend server
+├── templates/                     # HTML templates directory
+│   └── frontend.html              # Frontend user interface (UI)
+├── requirements.txt               # Python dependencies
+├── .env                           # Environment config (PostgreSQL credentials)
+├── README.md                      # Project documentation
+└── Book Store API Documentation/  # API docs, JSON examples, etc.
+```
+
 
 
 Contact
