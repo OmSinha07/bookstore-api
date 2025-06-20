@@ -104,7 +104,6 @@ bookstore-api/
 ```
 
 
-
 Contact
 This project was built as part of the Keploy API Fellowship – Session 2 assignment.
 For questions, collaboration, or issues — feel free to open an issue on GitHub or connect on LinkedIn.
