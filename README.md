@@ -82,7 +82,7 @@ json
 ```
 
 You can test the API using:
-Postman
+Postman or
 curl
 
 The built-in frontend (index.html)
