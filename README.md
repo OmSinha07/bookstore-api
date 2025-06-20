@@ -25,7 +25,7 @@ A full-stack application built using **Flask** and **PostgreSQL** to perform CRU
 
 ---
 
-#### Getting Started (Local Setup)
+## Getting Started (Local Setup)
 
 ### 1. Clone the Repository
 
