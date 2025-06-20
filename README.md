@@ -35,7 +35,7 @@ cd bookstore-api
 ### 2. Install Python Dependencies
 Make sure Python and pip are installed on your system. Then run:
 
-bash
+bash<br>
 pip install -r requirements.txt
 
 ### 3. Configure PostgreSQL
@@ -50,14 +50,14 @@ DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/Books
 
 
 ### 4. Run the Application
-bash
+bash<br>
 python app.py
 The server will run at:
 http://127.0.0.1:5000
 
 
 ### 5. Launch the Frontend
-Open frontend.html in your browser to access the user interface.
+This will open index.html in your browser following that Link.
 
 API Endpoints
 ```text
