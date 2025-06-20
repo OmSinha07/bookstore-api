@@ -27,48 +27,52 @@ A full-stack application built using **Flask** and **PostgreSQL** to perform CRU
 
 ## Getting Started (Local Setup)
 
- 1. Clone the Repository
-
-```bash```
-git clone https://github.com/OmSinha07/bookstore-api.git
+### 1. Clone the Repository
+git clone https://github.com/OmSinha07/bookstore-api.git <br>
 cd bookstore-api
 
-2. Install Python Dependencies
+
+### 2. Install Python Dependencies
 Make sure Python and pip are installed on your system. Then run:
 
-bash
+bash<br>
 pip install -r requirements.txt
 
-3. Configure PostgreSQL
+### 3. Configure PostgreSQL
 Create a PostgreSQL database named Books (or any name you prefer).
 
-Create a .env file in the project root and add your DB connection string:
+.env file is present in the project root and add your DB connection string:
 
-DATABASE_URL=postgresql://<username>:<password>@localhost:5432/Books
+```DATABASE_URL=postgresql://<username>:<password>@localhost:5432/Books```
 
 Example:-
 DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/Books
 
+sample is provided in .env file
 
-4. Run the Application
-bash
+### 4. Run the Application
+bash<br>
 python app.py
 The server will run at:
 http://127.0.0.1:5000
 
 
-5. Launch the Frontend
-Open frontend.html in your browser to access the user interface.
+### 5. Launch the Frontend
+This will open index.html in your browser following that Link.
 
 API Endpoints
+```text
 Action	Method	URL	Request Body
 Get all books	GET	/books	—
 Get book by ID	GET	/books/<id>	—
 Add new book	POST	/books	title, author, price
 Update book by ID	PUT	/books/<id>	title, author, price, id (optional)
 Delete book by ID	DELETE	/books/<id>	—
+```
 
 Sample JSON for Testing (POST / PUT)
+
+```text
 json
 {
   "id": 10,
@@ -76,22 +80,29 @@ json
   "author": "Robert C. Martin",
   "price": 599.00
 }
+```
+
 You can test the API using:
-Postman
+Postman or
 curl
+
+Also you can follow bookstore api documentation for any api related issue.
 
 The built-in frontend (index.html)
 
-Project Structure
-bookstore-api
-│
+## 📁 Project Structure
+
+```text
+bookstore-api/
 ├── app.py                         # Flask backend server
-├── templates/
-│   └── frontend.html              # Frontend user interface (HTML)
+├── templates/                     # HTML templates directory
+│   └── frontend.html              # Frontend user interface (UI)
 ├── requirements.txt               # Python dependencies
-├── .env                           # Environment variables (e.g., PostgreSQL credentials)
+├── .env                           # Environment config (PostgreSQL credentials)
 ├── README.md                      # Project documentation
-└── Book Store API Documentation/  # API documentation assets (Markdown, examples, diagrams, etc.)
+└── Book Store API Documentation/  # API docs, JSON examples, etc.
+```
+
 
 
 Contact
