@@ -69,6 +69,7 @@ Update book by ID	PUT	/books/<id>	title, author, price, id (optional)
 Delete book by ID	DELETE	/books/<id>	—
 
 Sample JSON for Testing (POST / PUT)
+
 json
 {
   "id": 10,
@@ -76,6 +77,8 @@ json
   "author": "Robert C. Martin",
   "price": 599.00
 }
+
+
 You can test the API using:
 Postman
 curl
