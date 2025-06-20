@@ -27,19 +27,19 @@ A full-stack application built using **Flask** and **PostgreSQL** to perform CRU
 
 ## Getting Started (Local Setup)
 
- 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash```
 git clone https://github.com/OmSinha07/bookstore-api.git
 cd bookstore-api
 
-2. Install Python Dependencies
+### 2. Install Python Dependencies
 Make sure Python and pip are installed on your system. Then run:
 
 bash
 pip install -r requirements.txt
 
-3. Configure PostgreSQL
+### 3. Configure PostgreSQL
 Create a PostgreSQL database named Books (or any name you prefer).
 
 Create a .env file in the project root and add your DB connection string:
@@ -50,14 +50,14 @@ Example:-
 DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/Books
 
 
-4. Run the Application
+### 4. Run the Application
 bash
 python app.py
 The server will run at:
 http://127.0.0.1:5000
 
 
-5. Launch the Frontend
+### 5. Launch the Frontend
 Open frontend.html in your browser to access the user interface.
 
 API Endpoints
@@ -83,15 +83,8 @@ curl
 The built-in frontend (index.html)
 
 Project Structure
-bookstore-api
-│
-├── app.py                         # Flask backend server
-├── templates/
-│   └── frontend.html              # Frontend user interface (HTML)
-├── requirements.txt               # Python dependencies
-├── .env                           # Environment variables (e.g., PostgreSQL credentials)
-├── README.md                      # Project documentation
-└── Book Store API Documentation/  # API documentation assets (Markdown, examples, diagrams, etc.)
+
+<pre> ## 📁 Project Structure ```text bookstore-api/ ├── app.py # Flask backend server ├── templates/ # HTML templates directory │ └── frontend.html # Frontend user interface (UI) ├── requirements.txt # Python dependencies ├── .env # Environment config (PostgreSQL credentials) ├── README.md # Project documentation └── Book Store API Documentation/ # API docs, JSON examples, etc. ``` </pre>
 
 
 Contact
