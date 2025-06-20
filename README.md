@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ### 3. Configure PostgreSQL
 Create a PostgreSQL database named Books (or any name you prefer).
 
-Create a .env file in the project root and add your DB connection string:
+.env file is present in the project root and add your DB connection string:
 
 DATABASE_URL=postgresql://<username>:<password>@localhost:5432/Books
 
