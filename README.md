@@ -28,10 +28,9 @@ A full-stack application built using **Flask** and **PostgreSQL** to perform CRU
 ## Getting Started (Local Setup)
 
 ### 1. Clone the Repository
-
-```bash```
-git clone https://github.com/OmSinha07/bookstore-api.git
+git clone https://github.com/OmSinha07/bookstore-api.git <br>
 cd bookstore-api
+
 
 ### 2. Install Python Dependencies
 Make sure Python and pip are installed on your system. Then run:
@@ -61,15 +60,18 @@ http://127.0.0.1:5000
 Open frontend.html in your browser to access the user interface.
 
 API Endpoints
+```text
 Action	Method	URL	Request Body
 Get all books	GET	/books	—
 Get book by ID	GET	/books/<id>	—
 Add new book	POST	/books	title, author, price
 Update book by ID	PUT	/books/<id>	title, author, price, id (optional)
 Delete book by ID	DELETE	/books/<id>	—
+```
 
 Sample JSON for Testing (POST / PUT)
 
+```text
 json
 {
   "id": 10,
@@ -77,7 +79,7 @@ json
   "author": "Robert C. Martin",
   "price": 599.00
 }
-
+```
 
 You can test the API using:
 Postman
