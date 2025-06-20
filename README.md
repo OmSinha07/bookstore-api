@@ -43,12 +43,12 @@ Create a PostgreSQL database named Books (or any name you prefer).
 
 .env file is present in the project root and add your DB connection string:
 
-text
 ```DATABASE_URL=postgresql://<username>:<password>@localhost:5432/Books```
 
 Example:-
 DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/Books
 
+sample is provided in .env file
 
 ### 4. Run the Application
 bash<br>
