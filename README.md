@@ -58,7 +58,7 @@ sample is provided in .env file
 
 ### 4. Run the Application
 bash<br>
-python app.py
+python run.py
 The server will run at:
 http://127.0.0.1:5000
 
