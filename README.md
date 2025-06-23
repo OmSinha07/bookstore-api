@@ -197,14 +197,15 @@ bookstore-api/
 │       ├── __init__.py
 │       └── test_api_endpoints.py     # Endpoint response & behavior tests
 │
-├── Book Store API Documentation/      # Markdown docs, OpenAPI, JSONs
-│   └── README_API.md (optional)       # Endpoint table, sample payloads
+├── Book Store API Documentation/      # docs, OpenAPI, JSONs
+│                                      # Endpoint table, sample payloads
 │
 ├── .env                               # PostgreSQL DATABASE_URL / TEST_DATABASE_URL
 ├── requirements.txt                   # pip install -r requirements.txt
 ├── README.md                          # Full project overview + setup
 ├── run.py                             # Entry script: from app import create_app
 ├── htmlcov/                           # coverage html output (auto-generated)
+
 
 ```
 
