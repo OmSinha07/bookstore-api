@@ -102,6 +102,9 @@ The built-in frontend (index.html)
 ![Test Coverage Screenshot](test_Coverage.png)
 
 
+For testing refer to tests_command.md
+
+
 
 ## 📁 Project Structure
 
