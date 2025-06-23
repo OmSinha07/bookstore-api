@@ -96,6 +96,9 @@ Also you can follow bookstore api documentation for any api related issue.
 
 The built-in frontend (index.html)
 
+
+## Test Coverage
+
 ![Test Coverage Screenshot](test_Coverage.png)
 
 
