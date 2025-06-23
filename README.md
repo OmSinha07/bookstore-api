@@ -205,7 +205,7 @@ bookstore-api/
 ├── README.md                          # Full project overview + setup
 ├── run.py                             # Entry script: from app import create_app
 ├── htmlcov/                           # coverage html output (auto-generated)
-└── test_commands.md                   # Test + Coverage CLI commands
+
 ```
 
 
