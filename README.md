@@ -1,4 +1,4 @@
-# Book Store API(Keploy API Fellowship task-2)
+# Book Store API(Keploy API Fellowship task-2 and 3)
 
 A full-stack application built using **Flask** and **PostgreSQL** to perform CRUD operations on a collection of books. This project includes a RESTful backend API and a styled frontend interface for managing books.
 
