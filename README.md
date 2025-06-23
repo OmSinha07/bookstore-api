@@ -4,13 +4,19 @@ A full-stack application built using **Flask** and **PostgreSQL** to perform CRU
 
 ---
 
+## API Integrated
+
+This application implements a custom RESTful API for managing books using Flask. It includes full CRUD functionality and is test-covered via unit, integration, and API-level testing.
+
+----
+
 ## Tech Stack
 
 - **Backend**: Flask, Flask-SQLAlchemy  
 - **Database**: PostgreSQL  
 - **Frontend**: HTML, CSS, Vanilla JavaScript  
 - **ORM**: SQLAlchemy  
-
+-**Testing Tools**: pytest,pytest-mock,coverage.py
 ---
 
 ## Features
@@ -90,17 +96,50 @@ Also you can follow bookstore api documentation for any api related issue.
 
 The built-in frontend (index.html)
 
+![Test Coverage Screenshot](test_Coverage.png)
+
+
+
 ## 📁 Project Structure
 
 ```text
 bookstore-api/
-├── app.py                         # Flask backend server
-├── templates/                     # HTML templates directory
-│   └── frontend.html              # Frontend user interface (UI)
-├── requirements.txt               # Python dependencies
-├── .env                           # Environment config (PostgreSQL credentials)
-├── README.md                      # Project documentation
-└── Book Store API Documentation/  # API docs, JSON examples, etc.
+├── app/                               # Application package
+│   ├── __init__.py                    # create_app(), db initialization
+│   ├── config.py                      # Config classes for prod/test
+│   ├── controllers.py                 # API route definitions
+│   ├── models.py                      # SQLAlchemy models
+│   ├── services.py                    # Business logic (CRUD, validation)
+│   ├── templates/
+│   │   └── index.html                 # Main frontend HTML page
+│   └── static/                        # Static assets
+│       ├── css/
+│       │   └── style.css              # Custom styling
+│       └── js/
+│           └── script.js             # JS logic (fetch, UI actions)
+│
+├── tests/                             # All testing types
+│   ├── __init__.py
+│   ├── unit/
+│   │   ├── __init__.py
+│   │   └── test_services.py          # Unit tests with/without mocks
+│   ├── integration/
+│   │   ├── __init__.py
+│   │   └── test_api_crud.py          # API <-> DB integration tests
+│   └── api/
+│       ├── __init__.py
+│       └── test_api_endpoints.py     # Endpoint response & behavior tests
+│
+├── Book Store API Documentation/      # Markdown docs, OpenAPI, JSONs
+│   └── README_API.md (optional)       # Endpoint table, sample payloads
+│
+├── .env                               # PostgreSQL DATABASE_URL / TEST_DATABASE_URL
+├── requirements.txt                   # pip install -r requirements.txt
+├── README.md                          # Full project overview + setup
+├── run.py                             # Entry script: from app import create_app
+└── htmlcov/                           # coverage html output (auto-generated)
+
+
 ```
 
 
