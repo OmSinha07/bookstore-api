@@ -143,14 +143,16 @@ bookstore-api/
 ├── requirements.txt                   # pip install -r requirements.txt
 ├── README.md                          # Full project overview + setup
 ├── run.py                             # Entry script: from app import create_app
-└── htmlcov/                           # coverage html output (auto-generated)
-
-
+├── htmlcov/                           # coverage html output (auto-generated)
+└── test_commands.md                   # Test + Coverage CLI commands
 ```
+
 
 
 Contact
 
 This project was built as part of the Keploy API Fellowship – Session 2 assignment.
 For questions, collaboration, or issues — feel free to open an issue on GitHub or connect on LinkedIn.
+
+
 
