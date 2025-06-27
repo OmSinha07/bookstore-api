@@ -167,15 +167,32 @@ Open htmlcov/index.html for the full report.<br>
 
 Here is a screenshot from the Keploy dashboard showing successful API test cases:
 
-### test-summary
-
-![Keploy Test Report](testreport/test-summary.png)
-
-
 ### test-details
 
-![Keploy Test Report](testreport/test-details.png)
+![Keploy Test Report](testreport/test_details.png)
 
+### test-summary
+
+![Keploy Test Report](testreport/test_report.png)
+
+
+##  GitHub Actions (CI/CD) Integration
+
+This project uses GitHub Actions for continuous integration.  
+On each push, the workflow runs:
+
+- Install dependencies
+- Start Flask server
+- Install Keploy CLI
+- Run Keploy test suite
+
+ Below is a screenshot of a successful CI run:
+
+![CI Workflow Passed](testreport/ci_passed.png)
+
+🔗 [View GitHub Actions Workflow File](.github/workflows/ci.yml)  
+
+🔗 [Latest Successful CI Run](https://github.com/OmSinha07/bookstore-api/actions/runs/15928513093/job/44931608315)
 
 
 
@@ -209,20 +226,20 @@ bookstore-api/
 ├── curl_commands/                     # ✅ For Keploy replay
 │   └── curl_*.sh or txt               # Curl API calls
 │
-├── testreport/            # ✅ Place for screenshots
+├── testreport/            #  Place for screenshots
 │   └── test-summary.png
 │   └── test-details.png
 │   └── test_Coverage.png       
 ├── .github/workflows/
-│   └── ci.yml                         # ✅ GitHub Actions config
+│   └── ci.yml                         #  GitHub Actions config
 │
-├── keploy.yml                         # ✅ Keploy config
-├── openapi.yaml                       # ✅ OpenAPI schema
+├── keploy.yml                         #  Keploy config
+├── openapi.yaml                       #  OpenAPI schema
 ├── .env                               # DB configs
 ├── .coverage                          # Code coverage file
 ├── requirements.txt                   # pip install -r requirements.txt
 ├── run.py                             # Flask app entrypoint
-├── README.md                          # ✅ Final summary
+├── README.md                          #  Final summary
 ├── Book Store API Documentation.pdf   # Optional doc PDF
 
 
