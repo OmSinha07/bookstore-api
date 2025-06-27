@@ -1,88 +1,120 @@
-from flask import Blueprint, request, jsonify, render_template
-from .services import get_all_books, get_book_by_id, add_book, update_book, delete_book
-from .models import Book
-from app import db
+from flask import request
+from flask_restx import Namespace, Resource, fields
+from werkzeug.exceptions import NotFound
 
-# Blueprint setup
-book_bp = Blueprint('book', __name__)
+from app.services import (
+    get_all_books,
+    get_book_by_id,
+    add_book,
+    update_book,
+    delete_book
+)
 
-# Home route (UI page)
-@book_bp.route('/')
-def home():
-    return render_template("index.html")
+book_ns = Namespace('books', description='Book operations')
 
-# GET all books
-@book_bp.route('/books', methods=['GET'])
-def get_books():
-    books = get_all_books()
-    return jsonify([
-        {
-            "id": book.id,
-            "title": book.title,
-            "author": book.author,
-            "price": book.price
-        } for book in books
-    ])
+book_model = book_ns.model('Book', {
+    'id': fields.Integer(readOnly=True),
+    'title': fields.String(required=True),
+    'author': fields.String(required=True),
+    'price': fields.Float(required=True)
+})
 
-# GET book by ID
-@book_bp.route('/books/<int:id>', methods=['GET'])
-def get_book(id):
-    try:
-        book = get_book_by_id(id)
-        return jsonify({
-            "id": book.id,
-            "title": book.title,
-            "author": book.author,
-            "price": book.price
-        }), 200
-    except Exception:
-        return jsonify({"error": "Book not found"}), 404
+# Helper to serialize book objects
+def serialize_book(book):
+    return {
+        'id': book.id,
+        'title': book.title,
+        'author': book.author,
+        'price': book.price
+    }
 
-# POST create new book
-@book_bp.route('/books', methods=['POST'])
-def create_book():
-    data = request.get_json()
-    if not data or not all(k in data for k in ['title', 'author', 'price']):
-        return jsonify({"error": "Missing required fields"}), 400
-    try:
+# Helper to extract only specified fields from book
+def filter_fields(book, fields_list):
+    return {field: getattr(book, field, None) for field in fields_list}
+
+
+@book_ns.route('/')
+class BookList(Resource):
+    @book_ns.marshal_list_with(book_model)
+    def get(self):
+        """Get all books, with optional X-Fields header"""
+        books = get_all_books() or []
+        x_fields = request.headers.get('X-Fields')
+
+        if x_fields:
+            fields_list = x_fields.split(',')
+            return [filter_fields(book, fields_list) for book in books]
+
+        return [serialize_book(book) for book in books]
+
+    @book_ns.expect(book_model, validate=True)
+    @book_ns.marshal_with(book_model, code=201)
+    def post(self):
+        """Add a new book"""
+        data = request.get_json()
+
+        for field in ['title', 'author']:
+            if not data.get(field) or str(data.get(field)).strip() == '':
+                book_ns.abort(400, f"{field.capitalize()} cannot be empty")
+
+        try:
+            data['price'] = float(data['price'])
+        except (ValueError, TypeError):
+            book_ns.abort(400, "Price must be a valid number")
+
         book = add_book(data)
-        return jsonify({"message": "Book added", "id": book.id}), 201
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return serialize_book(book), 201
 
-# PUT update book
-@book_bp.route('/books/<int:id>', methods=['PUT'])
-def edit_book(id):
-    try:
-        book = get_book_by_id(id)
-    except:
-        return jsonify({"error": "Book not found"}), 404
 
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "Missing data"}), 400
+@book_ns.route('/<int:id>')
+@book_ns.param('id', 'The Book ID')
+class BookByID(Resource):
+    def get(self, id):
+        """Get book by ID, with optional X-Fields header"""
+        try:
+            book = get_book_by_id(id)
+        except NotFound:
+            book_ns.abort(404, "Book not found")
 
-    result, updated_book = update_book(book, data)
-    if result == "duplicate_id":
-        return jsonify({"error": "A book with this new ID already exists."}), 409
+        x_fields = request.headers.get('X-Fields')
+        if x_fields:
+            fields_list = x_fields.split(',')
+            return filter_fields(book, fields_list)
 
-    return jsonify({
-        "message": "Book updated",
-        "book": {
-            "id": updated_book.id,
-            "title": updated_book.title,
-            "author": updated_book.author,
-            "price": updated_book.price
-        }
-    }), 200
+        return serialize_book(book)
 
-# DELETE book
-@book_bp.route('/books/<int:id>', methods=['DELETE'])
-def remove_book(id):
-    try:
-        book = get_book_by_id(id)
+    def delete(self, id):
+        """Delete a book"""
+        try:
+            book = get_book_by_id(id)
+        except NotFound:
+            book_ns.abort(404, "Book not found")
+
         delete_book(book)
-        return jsonify({"message": "Book deleted"}), 200
-    except Exception:
-        return jsonify({"error": "Book not found"}), 404
+        return {"message": "Book deleted"}, 200
 
+    @book_ns.expect(book_model, validate=True)
+    @book_ns.marshal_with(book_model)
+    def put(self, id):
+        """Update a book"""
+        try:
+            book = get_book_by_id(id)
+        except NotFound:
+            book_ns.abort(404, "Book not found")
+
+        data = request.get_json()
+
+        for field in ['title', 'author']:
+            if not data.get(field) or str(data.get(field)).strip() == '':
+                book_ns.abort(400, f"{field.capitalize()} cannot be empty")
+
+        try:
+            data['price'] = float(data['price'])
+        except (ValueError, TypeError):
+            book_ns.abort(400, "Price must be a valid number")
+
+        result, updated_book = update_book(book, data)
+        if result == "duplicate_id":
+            return {"error": "Duplicate ID"}, 409
+
+        return serialize_book(updated_book), 200

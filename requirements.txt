@@ -12,3 +12,7 @@ requests
 pytest-cov
 factory_boy        # Create mock data objects easily
 Faker              # Generate random names, books, etc.
+
+
+#Open API
+ flask-restx

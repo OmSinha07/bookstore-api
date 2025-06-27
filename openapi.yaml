@@ -1,0 +1,114 @@
+---
+swagger: '2.0'
+basePath: "/"
+paths:
+  "/books/":
+    get:
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              "$ref": "#/definitions/Book"
+      summary: Get all books
+      operationId: get_book_list
+      parameters:
+      - name: X-Fields
+        in: header
+        type: string
+        format: mask
+        description: An optional fields mask
+      tags:
+      - books
+    post:
+      responses:
+        '200':
+          description: Success
+      summary: Add a new book
+      operationId: post_book_list
+      parameters:
+      - name: payload
+        required: true
+        in: body
+        schema:
+          "$ref": "#/definitions/Book"
+      tags:
+      - books
+  "/books/{id}":
+    parameters:
+    - in: path
+      description: The Book ID
+      name: id
+      required: true
+      type: integer
+    delete:
+      responses:
+        '200':
+          description: Success
+      summary: Delete a book
+      operationId: delete_book_by_id
+      tags:
+      - books
+    get:
+      responses:
+        '200':
+          description: Success
+          schema:
+            "$ref": "#/definitions/Book"
+      summary: Get a book by ID
+      operationId: get_book_by_id
+      parameters:
+      - name: X-Fields
+        in: header
+        type: string
+        format: mask
+        description: An optional fields mask
+      tags:
+      - books
+    put:
+      responses:
+        '200':
+          description: Success
+      summary: Update a book
+      operationId: put_book_by_id
+      parameters:
+      - name: payload
+        required: true
+        in: body
+        schema:
+          "$ref": "#/definitions/Book"
+      tags:
+      - books
+info:
+  title: Book Store API
+  version: '1.0'
+  description: A simple Book Store API with Swagger Docs
+produces:
+- application/json
+consumes:
+- application/json
+tags:
+- name: books
+  description: Book operations
+definitions:
+  Book:
+    required:
+    - author
+    - price
+    - title
+    properties:
+      id:
+        type: integer
+      title:
+        type: string
+      author:
+        type: string
+      price:
+        type: number
+    type: object
+responses:
+  ParseError:
+    description: When a mask can't be parsed
+  MaskError:
+    description: When any error occurs on mask
