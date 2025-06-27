@@ -173,7 +173,7 @@ Here is a screenshot from the Keploy dashboard showing successful API test cases
 
 ### test-summary
 
-![Keploy Test Report](testreport/test_report.png)
+![Keploy Test Report](testreport/test_report.png.png)
 
 
 ##  GitHub Actions (CI/CD) Integration
