@@ -17,16 +17,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  # or the version your app needs
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # adjust if you're using Pipenv or Poetry
+          pip install -r requirements.txt
 
       - name: Start Flask Server
         run: |
-          nohup python app.py &  # adjust filename if not app.py
-          sleep 10  # wait for the server to start
+          nohup python run.py &
+          sleep 10
 
       - name: Install Keploy CLI
         run: |
@@ -35,4 +35,4 @@ jobs:
       - name: Run Keploy Test Suite
         run: |
           export KEPLOY_API_KEY=${{ secrets.KEPLOY_API_KEY }}
-          keploy test-suite --app=ae0e9303-1ed4-47bc-9c53-558e40e86644 --base-path=	http://127.0.0.1:5000/books --cloud
+          keploy test-suite --app=ae0e9303-1ed4-47bc-9c53-558e40e86644 --base-path=http://127.0.0.1:5000/books --cloud
