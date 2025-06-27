@@ -163,6 +163,18 @@ Open htmlcov/index.html for the full report.<br>
 ![Test Coverage Screenshot](test_Coverage.png)
 
 
+##  Keploy AI Test Report
+
+Here is a screenshot from the Keploy dashboard showing successful API test cases:
+
+### Dashboard
+
+![Keploy Test Report](keploy_api_testreport/Dashboard.png)
+
+
+### Test_report
+
+![Keploy Test Report](keploy_api_testreport/Test_report.png)
 
 
 
