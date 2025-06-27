@@ -1,4 +1,4 @@
-# Book Store API(Keploy API Fellowship task-2 and 3)
+# Book Store API(Keploy API Fellowship task-2,3 and 4)
 
 A full-stack application built using **Flask** and **PostgreSQL** to perform CRUD operations on a collection of books. This project includes a RESTful backend API and a styled frontend interface for managing books.
 
@@ -160,21 +160,21 @@ Open htmlcov/index.html for the full report.<br>
 
 ## Test Coverage
 
-![Test Coverage Screenshot](test_Coverage.png)
+![Test Coverage Screenshot](testreport/test_Coverage.png)
 
 
 ##  Keploy AI Test Report
 
 Here is a screenshot from the Keploy dashboard showing successful API test cases:
 
-### Dashboard
+### test-summary
 
-![Keploy Test Report](keploy_api_testreport/Dashboard.png)
+![Keploy Test Report](testreport/test-summary.png)
 
 
-### Test_report
+### test-details
 
-![Keploy Test Report](keploy_api_testreport/Test_report.png)
+![Keploy Test Report](testreport/test-details.png)
 
 
 
@@ -183,40 +183,48 @@ Here is a screenshot from the Keploy dashboard showing successful API test cases
 
 ```text
 bookstore-api/
-├── app/                               # Application package
-│   ├── __init__.py                    # create_app(), db initialization
-│   ├── config.py                      # Config classes for prod/test
+├── app/                               # ✅ Core app logic
+│   ├── __init__.py                    # Flask app factory
+│   ├── config.py                      # Environment config
 │   ├── controllers.py                 # API route definitions
 │   ├── models.py                      # SQLAlchemy models
-│   ├── services.py                    # Business logic (CRUD, validation)
+│   ├── services.py                    # Business logic layer
 │   ├── templates/
-│   │   └── index.html                 # Main frontend HTML page
-│   └── static/                        # Static assets
+│   │   └── index.html                 # HTML frontend
+│   └── static/
 │       ├── css/
-│       │   └── style.css              # Custom styling
+│       │   └── style.css
 │       └── js/
-│           └── script.js             # JS logic (fetch, UI actions)
+│           └── script.js
 │
-├── tests/                             # All testing types
+├── tests/                             # ✅ Organized testing
 │   ├── __init__.py
 │   ├── unit/
-│   │   ├── __init__.py
-│   │   └── test_services.py          # Unit tests with/without mocks
+│   │   └── test_services.py
 │   ├── integration/
-│   │   ├── __init__.py
-│   │   └── test_api_crud.py          # API <-> DB integration tests
+│   │   └── test_api_crud.py
 │   └── api/
-│       ├── __init__.py
-│       └── test_api_endpoints.py     # Endpoint response & behavior tests
+│       └── test_api_endpoints.py
 │
-├── Book Store API Documentation/      # docs, OpenAPI, JSONs
-│                                      # Endpoint table, sample payloads
+├── curl_commands/                     # ✅ For Keploy replay
+│   └── curl_*.sh or txt               # Curl API calls
 │
-├── .env                               # PostgreSQL DATABASE_URL / TEST_DATABASE_URL
+├── testreport/            # ✅ Place for screenshots
+│   └── test-summary.png
+│   └── test-details.png
+│   └── test_Coverage.png       
+├── .github/workflows/
+│   └── ci.yml                         # ✅ GitHub Actions config
+│
+├── keploy.yml                         # ✅ Keploy config
+├── openapi.yaml                       # ✅ OpenAPI schema
+├── .env                               # DB configs
+├── .coverage                          # Code coverage file
 ├── requirements.txt                   # pip install -r requirements.txt
-├── README.md                          # Full project overview + setup
-├── run.py                             # Entry script: from app import create_app
-├── htmlcov/                           # coverage html output (auto-generated)
+├── run.py                             # Flask app entrypoint
+├── README.md                          # ✅ Final summary
+├── Book Store API Documentation.pdf   # Optional doc PDF
+
 
 
 ```
